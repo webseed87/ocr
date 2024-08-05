@@ -14,7 +14,7 @@
     <title>OCR - 부품 OCR 신청</title>
 </head>
 
-<body>
+<body class="popup">
 
     <div class="contents">
         <header>
@@ -57,6 +57,7 @@
                                             </li>
                                         </ul>
                                         <ul class="select_ul">
+                                            <li class="title">보험사를 선택해주세요.</li>
                                             <li>
                                                 <div class="option meritz">
                                                     <div class="icon"></div>
@@ -139,30 +140,29 @@
                             </div>
                             <div class="img-contianer">
                                
-                                <div class="button-warp">
-                                    <label class="button disabled" for="fileElem">
-                                        <p class="img_icon"> <img src="../assets/images/upload-icon.png"></p>
-                                        파일업로드
+                                <div class="file-button-warp">
+                                    <label class="button " for="fileElem">
+                                        <p class="img_icon"> </p>
+                                        <p class="text">파일 추가</p>
                                     </label>
                                 </div>
                                 <p class="sub_txt">지원하는 파일 형식:jpg, jpeg, png, gif, pdf, tif</p>
-                                <div class="button-warp">
+                                <div class="camera-button-warp">
                                     <label class="button" for="cameraInput">
-                                        <p class="img_icon"><img src="../assets/images/camera.png"></p>
-                                        사진촬영
+                                        <p class="img_icon"></p>
+                                        <p class="text">사진 촬영</p>
                                     </label>
                                 </div>
                                 <input type="file" id="fileElem" multiple
                                     accept=".jpg, .jpeg, .png, .gif, .pdf, .tif, .tiff"
                                     onchange="handleFiles(this.files)">
-                                    <input type="file" id="fileElem" multiple accept=".jpg, .jpeg, .png, .gif, .pdf, .tif, .tiff" onchange="handleFiles(this.files)">
                                     <input type="file" id="cameraInput" accept="image/*" capture="camera" onchange="handleFiles(this.files)">
                                 
-                                </div>
+                            
                             <div id="gallery"></div>
-
+                        </div>
                         
-
+</form>
 
                     </div>
 
@@ -210,7 +210,7 @@
     </div>
 
     <!-- 로딩 이미지 부분 -->
-    <div class="popup-bg"></div>
+    <div class="popup-bg active"></div>
     <div class="loading">
         <div class="loader-warp">
             <div class="loader"></div>
@@ -219,17 +219,24 @@
     </div>
     </div>
     </div>
+
+        <!-- 전송완료 팝업 메세지 -->
+   
+        <div class="sever-mesages ">
+            <p> <img src="../assets/images/serve-complete.svg"></p>
+            <p>정상적으로<br> 전송이 완료되었습니다.</p>
+            <button class="close">확인</button>
+        </div>
     <!-- 서버오류 팝업 메세지 -->
-    <div class="popup-bg "></div>
-    <div class="sever-error">
+   
+    <div class="sever-mesages">
         <p> <img src="../assets/images/serve-error.svg"></p>
         <p>서버 오류로<br> 전송을 실패 하였습니다.</p>
         <button class="close">확인</button>
     </div>
 
     <!-- 파일오류 팝업 메세지 -->
-    <div class="popup-bg "></div>
-    <div class="sever-error ">
+    <div class="sever-mesages ">
         <p> <img src="../assets/images/file-error.svg"></p>
         <p>파일 오류로<br> 전송을 실패 하였습니다.</p>
         <button class="close">확인</button>
@@ -240,6 +247,8 @@
     jQuery(function ($) {
         $(".default_option").on('click', function () {
             $(this).parent().toggleClass("active");
+            $("body").addClass("popup");
+            $(".popup-bg").addClass("active");
         })
 
         $(".select_ul li").on('click', function () {
@@ -249,6 +258,8 @@
             // 셀렉트값이 선택되지 않으면 인풋 선택안되게
             $("input").prop("disabled", false);
             $(".button-warp .button").removeClass("disabled");
+            $("body").removeClass("popup");
+            $(".popup-bg").removeClass("active");
         })
 
         $('#fileElem').on('change', function () {
@@ -268,9 +279,9 @@
             $("body").addClass("active");
         })
 
-        $(".sever-error .close").on('click', function () {
+        $(".sever-mesages .close").on('click', function () {
             $(".popup-bg").removeClass("active");
-            $(".sever-error").removeClass("active");
+            $(".sever-mesages").removeClass("active");
             $("body").removeClass("active");
         })
     })
