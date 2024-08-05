@@ -1,0 +1,279 @@
+<!-- 
+최초작성 24-08-02 송주현
+-->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="32x32" type="image/png" href="../assets/images/favicon.png">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <script src="../assets/js/jquery.min.js"></script>
+    <script defer src="../assets/js/upload.js"></script>
+    <title>OCR - 부품 OCR 신청</title>
+</head>
+
+<body>
+
+    <div class="contents">
+        <header>
+            <div class="top">
+                <h1>OCR SERVICE</h1>
+            </div>
+            <div class="header-img">
+                <h2>Parts OCR Application </h2>
+                <p>부품 OCR 신청 </p>
+            </div>
+        </header>
+        <div class="container">
+            <div class="top">
+                <div class="xls-download"> <a href="javascript:void(0)"><button class="excel">
+                    <img src="../assets/images/excel.svg" >청구표준포맷 다운로드</button></a></div>
+                <h3>OCR 신청 파일을 등록해주세요.</h3>
+               
+            </div>
+
+
+            <!-- 폼 시작 -->
+            <div class="form">
+                <div class="img_upload">
+
+                    <div id="drop-area">
+                    
+                       
+                            <form class="my-form">
+
+
+                                  <!-- 상단 보험사 선택부분 -->
+                            <div class="top-menu">
+                                <div class="ins-select"> <label class="ins requirement">보험사: </label>
+                                    <div class="select_wrap active">
+                                        <ul class="default_option">
+                                            <li>
+                                                <div class="option">
+                                                    <p>보험사를 선택해주세요.</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <ul class="select_ul">
+                                            <li>
+                                                <div class="option meritz">
+                                                    <div class="icon"></div>
+                                                    <p>메리츠</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="option hanwha">
+                                                    <div class="icon"></div>
+                                                    <p>한화</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="option lotte">
+                                                    <div class="icon"></div>
+                                                    <p>롯데</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="option mg">
+                                                    <div class="icon"></div>
+                                                    <p>MG</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="option heungkuk">
+                                                    <div class="icon"></div>
+                                                    <p>흥국</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="option samsung">
+                                                    <div class="icon"></div>
+                                                    <p>삼성</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="option hyundai">
+                                                    <div class="icon"></div>
+                                                    <p>현대</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="option kb">
+                                                    <div class="icon"></div>
+                                                    <p>KB</p>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <div class="option db">
+                                                    <div class="icon"></div>
+                                                    <p>DB</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="option axa">
+                                                    <div class="icon"></div>
+                                                    <p>AXA</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="option hana">
+                                                    <div class="icon"></div>
+                                                    <p>하나</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="option carrot">
+                                                    <div class="icon"></div>
+                                                    <p>캐롯</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <div class="img-contianer">
+                               
+                                <div class="button-warp">
+                                    <label class="button disabled" for="fileElem">
+                                        <p class="img_icon"> <img src="../assets/images/upload-icon.png"></p>
+                                        파일업로드
+                                    </label>
+                                </div>
+                                <p class="sub_txt">지원하는 파일 형식:jpg, jpeg, png, gif, pdf, tif</p>
+                                <div class="button-warp">
+                                    <label class="button" for="cameraInput">
+                                        <p class="img_icon"><img src="../assets/images/camera.png"></p>
+                                        사진촬영
+                                    </label>
+                                </div>
+                                <input type="file" id="fileElem" multiple
+                                    accept=".jpg, .jpeg, .png, .gif, .pdf, .tif, .tiff"
+                                    onchange="handleFiles(this.files)">
+                                    <input type="file" id="fileElem" multiple accept=".jpg, .jpeg, .png, .gif, .pdf, .tif, .tiff" onchange="handleFiles(this.files)">
+                                    <input type="file" id="cameraInput" accept="image/*" capture="camera" onchange="handleFiles(this.files)">
+                                
+                                </div>
+                            <div id="gallery"></div>
+
+                        
+
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- 추가 정보 입력 부분 -->
+            <div class="add-info">
+                <h4>추가정보 입력</h4>
+                <ul>
+                    <li><label>차량번호:</label><input type="text" disabled id="carNumber" placeholder="차량번호를 입력해주세요."></li>
+                    <li><label>사고접수번호:</label><input type="number" id="reNumber" disabled placeholder="사고접수번호를 입력해주세요.">
+                    </li>
+                    <li><label>대리점사업자번호:</label><input type="text" id="agNumber" disabled placeholder="사업자번호를 입력해주세요.">
+                    </li>
+                </ul>
+            </div>
+
+            <div class="application-warp">
+                <button type="submit" disabled>OCR 서비스 신청
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_405_9951)">
+                            <path
+                                d="M13 0.411926C19.6895 0.411926 25.1094 5.83185 25.1094 12.5213C25.1094 19.2108 19.6895 24.6307 13 24.6307C6.31055 24.6307 0.890625 19.2108 0.890625 12.5213C0.890625 5.83185 6.31055 0.411926 13 0.411926ZM11.5889 7.42365L15.2754 10.9588H6.35938C5.70996 10.9588 5.1875 11.4813 5.1875 12.1307V12.9119C5.1875 13.5613 5.70996 14.0838 6.35938 14.0838H15.2754L11.5889 17.619C11.1152 18.0731 11.1055 18.8299 11.5693 19.2938L12.1064 19.826C12.5654 20.285 13.3076 20.285 13.7617 19.826L20.2412 13.3514C20.7002 12.8924 20.7002 12.1502 20.2412 11.6961L13.7617 5.21173C13.3027 4.75275 12.5605 4.75275 12.1064 5.21173L11.5693 5.74396C11.1055 6.21271 11.1152 6.96954 11.5889 7.42365Z"
+                                fill="currentColor" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_405_9951">
+                                <rect width="25" height="25" fill="white" transform="translate(0.5 0.0213013)" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </button>
+            </div>
+            </form>
+
+            
+            <!-- 푸터부분 -->
+            <footer>
+                <div class="kidi-logo"><img src="../assets/images/kidi-logo.svg"></div>
+                <p class="copy">Copyright © <span>Ocr Service</span> All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- 로딩 이미지 부분 -->
+    <div class="popup-bg"></div>
+    <div class="loading">
+        <div class="loader-warp">
+            <div class="loader"></div>
+        </div>
+        <p> OCR 처리중입니다...</p>
+    </div>
+    </div>
+    </div>
+    <!-- 서버오류 팝업 메세지 -->
+    <div class="popup-bg "></div>
+    <div class="sever-error">
+        <p> <img src="../assets/images/serve-error.svg"></p>
+        <p>서버 오류로<br> 전송을 실패 하였습니다.</p>
+        <button class="close">확인</button>
+    </div>
+
+    <!-- 파일오류 팝업 메세지 -->
+    <div class="popup-bg "></div>
+    <div class="sever-error ">
+        <p> <img src="../assets/images/file-error.svg"></p>
+        <p>파일 오류로<br> 전송을 실패 하였습니다.</p>
+        <button class="close">확인</button>
+    </div>
+
+</body>
+<script>
+    jQuery(function ($) {
+        $(".default_option").on('click', function () {
+            $(this).parent().toggleClass("active");
+        })
+
+        $(".select_ul li").on('click', function () {
+            var currentele = $(this).html();
+            $(".default_option li").html(currentele);
+            $(this).parents(".select_wrap").removeClass("active");
+            // 셀렉트값이 선택되지 않으면 인풋 선택안되게
+            $("input").prop("disabled", false);
+            $(".button-warp .button").removeClass("disabled");
+        })
+
+        $('#fileElem').on('change', function () {
+            validateFiles();
+        });
+
+        $('.my-form').on('submit', function (e) {
+            if (!validateFiles()) {
+                e.preventDefault();
+            }
+        });
+
+        // 신청 버튼 누르면 로딩이미지 나오게
+        $(".application-warp button").on('click', function () {
+            $(".popup-bg").addClass("active");
+            $(".loading").addClass("active");
+            $("body").addClass("active");
+        })
+
+        $(".sever-error .close").on('click', function () {
+            $(".popup-bg").removeClass("active");
+            $(".sever-error").removeClass("active");
+            $("body").removeClass("active");
+        })
+    })
+</script>
+
+</html>
