@@ -1,5 +1,12 @@
 <!-- 
 최초작성 24-08-02 송주현
+***기본UI 설명***
+보험사 선택화면이 먼저 뜹니다, 선택후 다른 화면이 보입니다.
+이미지를 끌어오거나 업로드 할 수 있으며 사진 촬영도 가능합니다 허용된 확장자만 올릴 수 있습니다.
+이미지를 올리면 전체삭제 버튼이 생기며 이미지가 없을시에 전체삭제 버튼도 사라집니다.
+ocr 신청 버튼은 기본 비활성화 되어 있으며 이미지가 있을시에만 활성화 됩니다. 
+신청 버튼을 누르면 로딩이미지가 뜹니다.
+신청 버튼 누른 후 전송 완료 및 오류 메세지는 dispaly:none 되어 있습니다 상황에 맞게 불러와 써주세요.
 -->
 <!DOCTYPE html>
 <html lang="ko">
@@ -29,9 +36,9 @@
         <div class="container">
             <div class="top">
                 <div class="xls-download"> <a href="javascript:void(0)"><button class="excel">
-                    <img src="../assets/images/excel.svg" >청구표준포맷 다운로드</button></a></div>
+                            <img src="../assets/images/excel.svg">청구표준포맷 다운로드</button></a></div>
                 <h3>OCR 신청 파일을 등록해주세요.</h3>
-               
+
             </div>
 
 
@@ -40,12 +47,12 @@
                 <div class="img_upload">
 
                     <div id="drop-area">
-                    
-                       
-                            <form class="my-form">
 
 
-                                  <!-- 상단 보험사 선택부분 -->
+                        <form class="my-form">
+
+
+                            <!-- 상단 보험사 선택부분 -->
                             <div class="top-menu">
                                 <div class="ins-select"> <label class="ins requirement">보험사: </label>
                                     <div class="select_wrap active">
@@ -139,7 +146,7 @@
 
                             </div>
                             <div class="img-contianer">
-                               
+
                                 <div class="file-button-warp">
                                     <label class="button " for="fileElem">
                                         <p class="img_icon"> </p>
@@ -156,13 +163,14 @@
                                 <input type="file" id="fileElem" multiple
                                     accept=".jpg, .jpeg, .png, .gif, .pdf, .tif, .tiff"
                                     onchange="handleFiles(this.files)">
-                                    <input type="file" id="cameraInput" accept="image/*" capture="camera" onchange="handleFiles(this.files)">
-                                
-                            
-                            <div id="gallery"></div>
-                        </div>
-                        
-</form>
+                                <input type="file" id="cameraInput" accept="image/*" capture="camera"
+                                    onchange="handleFiles(this.files)">
+
+
+                                <div id="gallery"></div>
+                            </div>
+
+                        </form>
 
                     </div>
 
@@ -200,7 +208,7 @@
             </div>
             </form>
 
-            
+
             <!-- 푸터부분 -->
             <footer>
                 <div class="kidi-logo"><img src="../assets/images/kidi-logo.svg"></div>
@@ -220,15 +228,15 @@
     </div>
     </div>
 
-        <!-- 전송완료 팝업 메세지 -->
-   
-        <div class="sever-mesages ">
-            <p> <img src="../assets/images/serve-complete.svg"></p>
-            <p>정상적으로<br> 전송이 완료되었습니다.</p>
-            <button class="close">확인</button>
-        </div>
+    <!-- 전송완료 팝업 메세지 -->
+
+    <div class="sever-mesages ">
+        <p> <img src="../assets/images/serve-complete.svg"></p>
+        <p>정상적으로<br> 전송이 완료되었습니다.</p>
+        <button class="close">확인</button>
+    </div>
     <!-- 서버오류 팝업 메세지 -->
-   
+
     <div class="sever-mesages">
         <p> <img src="../assets/images/serve-error.svg"></p>
         <p>서버 오류로<br> 전송을 실패 하였습니다.</p>
